@@ -35,5 +35,29 @@ print(f"\nTotal de resenhas processadas: {len(lista_dicionarios)}")
 print("\nPrimeira resenha:")
 print(lista_dicionarios[0])
 
+def contador_avaliacoes(lista_dicionarios):
+    contador_positivas = 0
+    contador_negativas = 0
+    contador_neutras = 0
 
+    lista_dicionarios_str = []
 
+    for dicionario in lista_dicionarios:
+        if dicionario['classificacao'] == 'Positiva':
+            contador_positivas += 1
+        elif dicionario['classificacao'] == 'Negativa':
+            contador_negativas += 1
+        elif dicionario['classificacao'] == 'Neutra':
+            contador_neutras += 1
+
+        lista_dicionarios_str.append(dicionario)
+
+    resenhas_unidas = '####'.join(lista_dicionarios_str)
+
+    return contador_positivas, contador_negativas, contador_neutras, resenhas_unidas
+
+contador_positivas, contador_negativas, contador_neutras, resenhas_unidas = contador_avaliacoes(lista_dicionarios)
+print(f"Total de avaliações positivas: {contador_positivas}")
+print(f"Total de avaliações negativas: {contador_negativas}")
+print(f"Total de avaliações neutras: {contador_neutras}")
+print(f"Resenhas unidas: {resenhas_unidas}")
